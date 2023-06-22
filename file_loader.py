@@ -1,20 +1,5 @@
 import random
 from random import randint
-file_names = ["file1"]
-
-def load_file_old (file_name:str="test",extension:str=".csv") -> list:
-	lista = []
-	try:
-		file = open(file_name+extension,"r")
-	except Exception:
-		return None
-
-	for count, line in enumerate(file):
-		line = line.strip()
-		aux = line.split(";")
-		lista.append({"model":aux[0],"year":aux[1].split(",")})
-	file.close()
-	return lista
 
 def load_file (file_name:str="test",extension:str=".csv") -> list:
 	lista = []
@@ -70,16 +55,3 @@ def generador_archivo (arr:list,file_name:str, extension:str=".csv", clear:bool=
 def clear_file (file_name:str) -> None:
 	file = open(file_name, "w")
 	file.close()
-
-def clear () -> None:
-	from os import system
-	system("cls")
-
-def pause () -> None:
-	from os import system
-	system("pause")
-
-lista_patentes = generador_patentes(10,3,3)
-generador_archivo(lista_patentes,"test",".csv")
-
-print(load_file("file1"))
